@@ -1,9 +1,7 @@
 <?php 
 
 function db() {
-    $db = new Database();
-    $db->setSettings('localhost', 'root', '', 'db_apd');
-    return $db->connect();
+    return Database::connect();
 }
 
 function view( $name, $data = []) {

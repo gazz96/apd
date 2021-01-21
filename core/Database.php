@@ -3,25 +3,27 @@
 class Database 
 {
 
-    private $host;
-    private $username;
-    private $userpass;
-    private $dbname;
+    private static $host;
+    private static $username;
+    private static $userpass;
+    private static $dbname;
+
+    private static $instance  =false ;
 
 
-    public function setSettings($host, $username, $userpass, $dbname) {
-        $this->host = $host;
-        $this->username = $username;
-        $this->userpass = $userpass;
-        $this->dbname = $dbname;
+    public static function setSettings($host, $username, $userpass, $dbname) {
+        self::$host = $host;
+        self::$username = $username;
+        self::$userpass = $userpass;
+        self::$dbname = $dbname;
     }
 
-    public function connect() {
-        $mysqli = new mysqli( $this->host, $this->username, $this->userpass, $this->dbname);
+    public static function connect() {
+        if( ! self::$instance ) self::$instance= new mysqli( self::$host, self::$username, self::$userpass, self::$dbname);
 
         //var_dump($mysqli);
 
-        return $mysqli;
+        return self::$instance;
     }
 
 

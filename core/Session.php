@@ -2,7 +2,10 @@
 
 class Session {
 
- 
+    public function set($data) {
+        $_SESSION = $data;
+    }
+    
     public function add( $name, $value) {
         $_SESSION[$name] = $value;
     }

@@ -9,6 +9,9 @@ require_once 'core/Request.php';
 require_once 'core/Session.php';
 require_once 'core/Model.php';
 
+
+Database::setSettings('localhost', 'root', '', 'db_apd');
+
 $router = new Router();
 
 $pagename = $_GET['pagename'] ?? false;

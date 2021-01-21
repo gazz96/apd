@@ -14,8 +14,13 @@ class Model
     }
 
     public function find( $id ) {
-        $data = db()->query("SELECT * FROM {$this->table} WHERE {$this->primary_key}='{id}'")->fetch_array();
+        $query_str = "SELECT * FROM {$this->table} WHERE {$this->primary_key}='{$id}'";
+
+
+        $data = db()->query( $query_str )->fetch_array();
         $this->find = $data;
+
+
         return $data;
     }
 
@@ -30,7 +35,12 @@ class Model
 
     public function create( $data = []) {
         $query_str = "INSERT INTO {$this->table}";
-        $query_str .= "(" . implode(',', array_keys($data) ) . ")";
+        $keys_arr = [];
+
+        foreach( $data as $key => $value) {
+            $keys_arr[] = "`{$key}`";
+        }
+        $query_str .= "(" . implode(',', $keys_arr ) . ")";
 
         $values = [];
 
