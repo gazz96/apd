@@ -2,7 +2,7 @@
                 <div class="page-footer">
                     <div class="row">
                         <div class="col-md-12">
-                            <span class="footer-text">2019 © stacks</span>
+                            <span class="footer-text"><?php date('Y') ?>© PT. TACI</span>
                         </div>
                     </div>
                 </div>

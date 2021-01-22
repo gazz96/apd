@@ -10,7 +10,11 @@ class AdminProductsController {
 
         $productModel = model('ProductsModel');
 
-        $posts = $productModel->all();
+        $posts = db()->query("
+            SELECT products.*, stocks.id as stock_id, stocks.qty FROM products 
+            JOIN stocks ON products.id = stocks.product_id
+            ORDER BY products.id DESC
+        ");
 
         view('dashboard/header');
         view('dashboard/admin/products/index', [

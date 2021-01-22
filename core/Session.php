@@ -36,4 +36,8 @@ class Session {
         return $data;
     }
 
+    public function destroy() {
+        session_destroy();
+    }
+
 }

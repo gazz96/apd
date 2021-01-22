@@ -36,14 +36,6 @@
         <div class="card">
             <div class="card-body">
                 <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">No</th>
-                            <th>Username</th>
-                            <th scope="col">Order</th>
-                            <th>Tanggal</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <?php $no = 0; ?>
                         <?php foreach( $posts as $post ) : ?>
@@ -60,21 +52,36 @@
                         ?>
 
                         <tr>
-                            <th scope="row"><?php echo ++$no; ?></th>
-                            <td><?php echo $post['username'] ?></td>
+                            <td scope="row" width="80">Date</td>
+                            <td><?php echo $post['order_date'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td><?php echo $post['fullname'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Bagian</td>
+                            <td><?php echo $post['bagian'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Pesanan</td>
                             <td>
                                 <ul>
+
                                 <?php foreach( $orders as $order ): ?>
 
                                     <li>
-                                        <div><?php echo $order['name'] ?></div> 
-                                        Jumlah Order: <?php echo $order['qty'] ?>
+                                        <div><?php echo $order['name'] ?>, <?php echo $order['qty'] ?> Pcs</div>
                                     </li>
 
                                 <?php endforeach; ?>
+
                                 </ul>
+
                             </td>
-                            <td><?php echo (new DateTime)->format('j, F Y') ?></td>
+                        </tr>
+                        <tr class="border-bottom">
+                            <td colspan="3">&nbsp;</td>
                         </tr>
 
                         <?php endforeach; ?>

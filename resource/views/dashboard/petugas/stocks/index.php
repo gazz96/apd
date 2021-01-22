@@ -36,7 +36,6 @@
                             <th scope="col">No</th>
                             <th>Product</th>
                             <th scope="col">Qty</th>
-                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,10 +46,6 @@
                             <th scope="row"><?php echo ++$no; ?></th>
                             <td><?php echo $post['name'] ?></td>
                             <td><?php echo $post['qty'] ?></td>
-                            <td>
-                                <a href="<?php echo base_url('?pagename=admin-stocks-edit&id=' . $post['id']) ?>" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="<?php echo base_url('?pagename=admin-stocks-delete&id=' . $post['id']) ?>" class="btn btn-sm btn-danger">Delete</a>
-                            </td>
                         </tr>
 
                         <?php endforeach; ?>

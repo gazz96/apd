@@ -8,11 +8,9 @@ class AdminUsersController {
 
     public function index() {
 
-        $productModel = model('UsersModel');
-
         $posts = db()->query("
         
-        SELECT * FROM users
+        SELECT users.*, roles.name FROM users
         LEFT JOIN roles ON roles.id = users.role_id
         
         ");
@@ -37,12 +35,12 @@ class AdminUsersController {
         $data = request()->only([
             'fullname',
             'username',
-            'userpass',
             'status',
-            'role_id'
+            'role_id',
+            'bagian'
         ]);
 
-        if( request()->input('userpass')) $data['userpass'] = md5( $data['userpass'] );
+        if( request()->input('userpass')) $data['userpass'] = md5( request()->input('userpass') );
         
         $productModel = model('UsersModel');
         $productModel->create( $data );
@@ -62,7 +60,7 @@ class AdminUsersController {
         view('dashboard/header');
         view('dashboard/admin/users/edit', [
             'post' => $post,
-            'roles' => model('UsersModel')->all()
+            'roles' => model('RolesModel')->all()
         ]);
         view('dashboard/footer');
     }
@@ -72,12 +70,12 @@ class AdminUsersController {
         $data = request()->only([
             'fullname',
             'username',
-            'userpass',
             'status',
-            'role_id'
+            'role_id',
+            'bagian'
         ]);
 
-        if( request()->input('userpass')) $data['userpass'] = md5( $data['userpass'] );
+        if( request()->input('userpass')) $data['userpass'] = md5( request()->input('userpass') );
 
         $model = model('UsersModel');
         $model->update( $data, [

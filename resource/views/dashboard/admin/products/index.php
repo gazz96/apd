@@ -51,7 +51,7 @@
                             <td><?php echo $post['name'] ?></td>
                             <td><?php echo $post['description'] ?></td>
                             <td>
-                                <a href="<?php echo base_url('?pagename=admin-stock&id=' . $post['id']) ?>" class="btn btn-sm btn-info">Manage</a>
+                                <a href="<?php echo base_url('?pagename=admin-stocks-edit&id=' . $post['stock_id']) ?>" class="btn btn-sm btn-info">(<?php echo $post['qty'] ?> Pcs)</a>
                             </td>
                             <td>
                                 <a href="<?php echo base_url('?pagename=admin-products-edit&id=' . $post['id']) ?>" class="btn btn-sm btn-warning">Edit</a>

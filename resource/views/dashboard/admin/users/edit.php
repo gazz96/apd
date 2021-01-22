@@ -42,6 +42,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="i-bagian">Bagian</label>
+                    <input name="bagian" type="text" class="form-control" id="i-bagian" value="<?php echo $post['bagian'] ?>">
+                </div>
+
+                <div class="form-group">
                     <label for="i-status">Status</label>
                     <select name="status" class="form-control" id="i-status">
                         <?php foreach( ['Active', 'Inactive'] as $status ) : ?>

@@ -42,13 +42,14 @@
             <div class="page-sidebar">
                 <div class="logo-box"><a href="#" class="logo-text">PT. TACI</a><a href="#" id="sidebar-close"><i class="material-icons">close</i></a> <a href="#" id="sidebar-state"><i class="material-icons">adjust</i><i class="material-icons compact-sidebar-icon">panorama_fish_eye</i></a></div>
                 <div class="page-sidebar-inner slimscroll">
+
+                    <?php if( session()->get('name') == 'Admin' ) :?>
+
                     <ul class="accordion-menu">
                         <li class="sidebar-title">
                             Admin Menu
                         </li>
-                        <li class="active-page">
-                            <a href="index.html" class="active"><i class="material-icons-outlined">dashboard</i>Dashboard</a>
-                        </li>
+                     
                         <li>
                             <a href="<?php echo base_url('?pagename=admin-orders-index') ?>"><i class="material-icons-outlined">inbox</i>Pesanan Masuk</a>
                         </li>
@@ -65,15 +66,22 @@
                             <a href="<?php echo base_url('?pagename=admin-laporan-index') ?>"><i class="material-icons-outlined">calendar_today</i>Laporan</a>
                         </li>
                         
+                        <li>
+                            <a href="<?php echo base_url('?pagename=logout') ?>"><i class="material-icons">exit_to_app</i>Logout</a>
+                        </li>
+                        
                     </ul>
+
+                    <?php endif; ?>
+                    
+                    
+                    <?php if( session()->get('name') == 'Petugas' ) :?>
 
                     <ul class="accordion-menu">
                         <li class="sidebar-title">
                             Petugas Menu
                         </li>
-                        <li class="active-page">
-                            <a href="index.html" class="active"><i class="material-icons-outlined">dashboard</i>Dashboard</a>
-                        </li>
+                        
                         <li>
                             <a href="<?php echo base_url('?pagename=petugas-orders-index') ?>"><i class="material-icons-outlined">inbox</i>Pesanan APD</a>
                         </li>
@@ -81,13 +89,18 @@
                             <a href="<?php echo base_url('?pagename=petugas-stocks-index') ?>"><i class="material-icons-outlined">account_circle</i>Check Stock APD</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url('?pagename=petugas-settings-index') ?>"><i class="material-icons-outlined">account_circle</i>Pengaturan</a>
+                            <a href="<?php echo base_url('?pagename=pengaturan') ?>"><i class="material-icons-outlined">account_circle</i>Pengaturan</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url('?pagename=petugas-help-index') ?>"><i class="material-icons">cloud_queue</i>Bantuan</a>
+                            <a href="<?php echo base_url('?pagename=bantuan') ?>"><i class="material-icons">cloud_queue</i>Bantuan</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url('?pagename=logout') ?>"><i class="material-icons">exit_to_app</i>Logout</a>
                         </li>
                         
                     </ul>
+
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="page-container">
@@ -103,17 +116,18 @@
                             <li class="nav-item nav-profile dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img src="<?php echo base_url() ?>public/assets/images/avatars/profile-image-1.png" alt="profile image">
-                                    <span>Nancy Moore</span><i class="material-icons dropdown-icon">keyboard_arrow_down</i>
+                                    <span><?php echo session()->get('fullname') ?></span>
+                                    <!-- <i class="material-icons dropdown-icon">keyboard_arrow_down</i> -->
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#">Calendar<span class="badge badge-pill badge-info float-right">2</span></a>
                                     <a class="dropdown-item" href="#">Settings &amp Privacy</a>
                                     <a class="dropdown-item" href="#">Switch Account</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Log out</a>
-                                </div>
+                                </div> -->
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a href="#" class="nav-link"><i class="material-icons-outlined">mail</i></a>
                             </li>
                             <li class="nav-item">
@@ -121,8 +135,9 @@
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link" id="dark-theme-toggle"><i class="material-icons-outlined">brightness_2</i><i class="material-icons">brightness_2</i></a>
-                            </li>
+                            </li> -->
                         </ul>
+                        <!-- 
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -143,5 +158,6 @@
                                 </div>
                             </form>
                         </div>
+                        -->
                     </nav>
                 </div>

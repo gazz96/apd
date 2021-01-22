@@ -6,15 +6,17 @@ class Model
     protected $table = '';
     protected $primary_key = '';
     protected $fillable = [];
-
+    protected $orderBy;
+    protected $order = 'ASC';
     protected $find = [];
 
 
     public function __construct() {
+        $this->orderBy = $this->primary_key;
     }
 
     public function find( $id ) {
-        $query_str = "SELECT * FROM {$this->table} WHERE {$this->primary_key}='{$id}'";
+        $query_str = "SELECT * FROM {$this->table} WHERE {$this->primary_key}='{$id}' ORDER BY {$this->orderBy} {$this->order}";
 
 
         $data = db()->query( $query_str )->fetch_array();
@@ -77,6 +79,12 @@ class Model
 
     public function delete( $id ) {
         return db()->query("DELETE FROM {$this->table} WHERE $this->primary_key='{$id}'");
+    }
+
+    public function orderByDesc( $name ='' ) {
+        $this->order = 'DESC';
+        $this->orderBy = $name ?? $this->table .'.'. $this->primary_key;
+        return $this;
     }
 
 
