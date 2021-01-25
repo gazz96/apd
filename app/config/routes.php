@@ -1,5 +1,6 @@
 <?php 
 
+$this->add('', 'HomeController@redirect');
 $this->add('home', 'HomeController@index');
 $this->add('about', 'AboutController@index');
 

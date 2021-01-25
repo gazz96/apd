@@ -2,7 +2,7 @@
 
 class Session {
 
-    public function set($data) {
+    public function setData($data) {
         $_SESSION = $data;
     }
     
@@ -37,6 +37,7 @@ class Session {
     }
 
     public function destroy() {
+        $_SESSION = [];
         session_destroy();
     }
 

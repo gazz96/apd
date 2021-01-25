@@ -8,4 +8,8 @@ class HomeController {
         view('dashboard/footer');
     }
 
+    public function redirect() {
+        header('location: ?pagename=login');
+    }
+
 }

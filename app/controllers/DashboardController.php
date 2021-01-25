@@ -16,6 +16,8 @@ class DashboardController {
 
     public function check_login() {
 
+        
+      
         $username = request()->input('username');
         $userpass = md5( request()->input('userpass') );
         
@@ -26,24 +28,30 @@ class DashboardController {
         ";
 
 
-        $user = db()->query( $query_str )->fetch_array();
-
+        $user = db()->query( $query_str )->fetch_array( MYSQLI_ASSOC );
 
         if( $user ) {
 
-            session()->set( $user + [ 'is_login' => 1 ]);
+            session()->setData( $user + [ 'is_login' => 1 ]);
 
-            if( $user['name'] == 'Petugas')  header('location: ' . base_url('?pagename=petugas-orders-index') ); exit;
+            var_dump( $user );
 
-            if( $user['name'] == 'Admin') header('location: ' . base_url('?pagename=admin-orders-index') ); exit;
-            exit;
+            if( $user['name'] == 'Petugas') {
+                header('location: ' . base_url('?pagename=petugas-orders-index') ); exit;
+            }
+            
+            if( $user['name'] == 'Admin') header('location: ' . base_url('?pagename=admin-orders-index') ); exit; 
+           
+
 
         }
+
+        
 
         session()->add('status', 'warning');
         session()->add('message', 'Username and password not match');
         
-        header('location: ' . base_url('?pagename=login') );
+        header('location: ' . base_url('?pagename=login') ); exit;
         
 
     }

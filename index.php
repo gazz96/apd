@@ -14,7 +14,7 @@ Database::setSettings('localhost', 'root', '', 'db_apd');
 
 $router = new Router();
 
-$pagename = $_GET['pagename'] ?? false;
+$pagename = $_GET['pagename'] ?? '';
 
 require_once 'general.php';
 
